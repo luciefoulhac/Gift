@@ -1,0 +1,729 @@
+/*---------------------------------------------------------*/
+/* 1. GENERAL	  	                                       */
+/*---------------------------------------------------------*/
+
+html,
+body {
+	color: #fff;
+	font-family: helvetica neue, Arial, sans-serif;
+	font-weight: lighter;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: 'pacificoregular', cursive;
+	font-size: 2.5em;
+	font-weight: lighter;
+	text-transform: uppercase;
+}
+
+h1 { font-size: 5rem; }
+
+h2 {
+	line-height: 3em;
+	text-shadow: 0 -1px 0 #bfbfbf;
+}
+
+ul { list-style: none; }
+
+/* Inputs */
+input {
+	background: transparent;
+	border: none;
+	font-size: 1.5rem;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	text-align: center;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+input:focus { outline:none; }
+::-webkit-input-placeholder { color: #fff; }
+:-moz-placeholder { color: #fff; }
+::-moz-placeholder { color: #fff; }
+
+input.add-friend {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	font-style: italic;
+	height: 3.5em;
+	line-height: 3.5em;
+	padding: 0 1em;
+	width: 100%;
+}
+
+input.add {
+	background: rgba(0, 0, 0, 0.1);
+	color: #3A3F46;
+	height: auto;
+	line-height: 5rem;
+	margin: 1.5rem 0;
+	padding: 0 2rem 0 3rem;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.add ::-webkit-input-placeholder { color: #3A3F46; }
+.add :-moz-placeholder { color: #3A3F46; }
+.add ::-moz-placeholder { color: #3A3F46; }
+
+input.add-first {
+	color: #fff;
+	margin: 0;
+}
+
+/* Button */
+button {
+	background: none;
+	border: none;
+	font-size: 2em;
+}
+button:focus { outline:0; }
+button.remove {
+	font-size: 0.8em;
+	height: 3em;
+	line-height: 1em;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	right: 0.5em;
+	top: 0;
+	width: 3em;
+}
+
+@font-face {
+    font-family: 'pacificoregular';
+    src: url(/lab/giftapp/fonts/pacifico-webfont.eot);
+    src: url(/lab/giftapp/fonts/pacifico-webfont.eot?#iefix) format('embedded-opentype'),
+         url(/lab/giftapp/fonts/pacifico-webfont.woff2) format('woff2'),
+         url(/lab/giftapp/fonts/pacifico-webfont.woff) format('woff'),
+         url(/lab/giftapp/fonts/pacifico-webfont.ttf) format('truetype'),
+         url(/lab/giftapp/fonts/pacifico-webfont.svg#pacificoregular) format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* Icones */
+@font-face {
+  font-family: 'giftapp';
+  src: url(/lab/giftapp/fonts/giftapp-webfont.eot);
+  src: url(/lab/giftapp/fonts/giftapp-webfont.eot?#iefix) format('embedded-opentype'),
+       url(/lab/giftapp/fonts/giftapp-webfont.woff) format('woff'),
+       url(/lab/giftapp/fonts/giftapp-webfont.ttf) format('truetype'),
+       url(/lab/giftapp/fonts/giftapp-webfont.svg?#giftapp) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+	display: inline-block;
+	font-family: 'giftapp';
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: 1rem;
+	position: relative;
+	speak: none;
+	text-decoration: inherit;
+	text-align: center;
+	text-transform: none;
+	text-shadow: 0 -1px 0 #bfbfbf;
+	width: 1rem;
+}
+
+.icon-gift:before { content: '\e803'; }
+.icon-plus:before { content: '\e804'; left: 2.5rem; }
+.icon-th-list:before { content: '\e806'; }
+
+.right { float: right; }
+.left { float: left; }
+
+/*---------------------------------------------------------*/
+/* 2. CONTENU PRINCIPAL                                    */
+/*---------------------------------------------------------*/
+
+	#app,
+	#homescreen,
+	#desktop { display: none; }
+
+/*---------------------------------------------------------*/
+/* 2.1. DESKTOP			                                   */
+/*---------------------------------------------------------*/
+
+.desktop #desktop { display: block; }
+
+#desktop {
+	background: #f67280;
+	height: 100%;
+	overflow: hidden;
+	padding: 0 4rem;
+	text-align: center;
+}
+
+	#desktop .description {
+		margin-top: 4rem;
+		width: 500px;
+	}
+
+		#desktop h1 {
+			font-size: 5em;
+			margin: 0;
+			-webkit-animation: slideLeft 1s ease both;
+			-moz-animation: slideLeft 1s ease both;
+			animation: slideLeft 1s ease both;
+			-webkit-animation-delay: 0.3s;
+			-moz-animation-delay: 0.3s;
+			animation-delay: 0.3s;
+		}
+
+		#desktop p {
+			-webkit-animation: slideLeft 1s ease both;
+			-moz-animation: slideLeft 1s ease both;
+			animation: slideLeft 1s ease both;
+			-webkit-animation-delay: 0.7s;
+			-moz-animation-delay: 0.7s;
+			animation-delay: 0.7s;
+		}
+
+		#desktop button {
+			background: rgba(0, 0, 0, 0.1);
+			font-size: 2rem;
+			line-height: 5rem;
+			margin: 1.5rem 0;
+			padding: 0 2rem 0 3rem;
+			text-transform: uppercase;
+			width: 100%;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+			-webkit-animation: slideLeft 1s ease both;
+			-moz-animation: slideLeft 1s ease both;
+			animation: slideLeft 1s ease both;
+			-webkit-animation-delay: 1s;
+			-moz-animation-delay: 1s;
+			animation-delay: 1s;
+		}
+		#desktop button:hover {
+			background: rgba(0, 0, 0, 0.2);
+		}
+
+	#desktop img {
+		position: absolute;
+		right: -100px;
+		-webkit-animation: plop 1s ease both;
+		-moz-animation: plop 1s ease both;
+		animation: plop 1s ease both;
+	}
+
+	/* Modal */
+	.md-perspective body  {
+		background: #222;
+		-webkit-perspective: 600px;
+		-moz-perspective: 600px;
+		perspective: 600px;
+	}
+
+	.md-modal {
+		height: auto;
+		left: 50%;
+		max-width: 630px;
+	    min-width: 320px;
+	    position: fixed;
+	    top: 50%;
+	    visibility: hidden;
+	    width: 50%;
+	    z-index: 2000;
+	    backface-visibility: hidden;
+	    -webkit-transform: translateX(-50%) translateY(-50%);
+    	-moz-transform: translateX(-50%) translateY(-50%);
+   		-o-transform: translateX(-50%) translateY(-50%);
+    	-ms-transform: translateX(-50%) translateY(-50%);
+	    transform: translateX(-50%) translateY(-50%);
+	}
+	.webapp .md-modal { display: none; }
+	.md-show { visibility: visible; }
+
+		.md-content {
+			background: #3a4447;
+			border-radius: 3px;
+			color: #fff;
+			margin: 0 auto;
+			position: relative;
+			text-align: center;
+		}
+
+			.md-content h2 {
+				background: rgba(0,0,0,0.1);
+				font-family: helvetica neue, arial, sans-serif;
+				line-height: 2.5rem;
+				margin: 0;
+				padding: 1.5rem 0;
+			}
+
+			.md-content div {
+				padding: 15px 60px 30px;
+				margin: 0;
+				font-size: 1.15em;
+			}
+
+	.md-overlay {
+		background: rgba(58, 68, 71, 0.8);
+		height: 100%;
+		left: 0;
+		opacity: 0;
+	    position: fixed;
+	    top: 0;
+	    visibility: hidden;
+	    width: 100%;
+	    z-index: 1000;
+		-webkit-transition: all 0.3s;
+		-moz-transition: all 0.3s;
+		-o-transition: all 0.3s;
+		-ms-transition: all 0.3s;
+		transition: all 0.3s;
+	}
+	.webapp .md-overlay { display: none; }
+
+	.md-show ~ .md-overlay {
+	    opacity: 1;
+	    visibility: visible;
+	}
+
+	.md-show.md-effect ~ .container {
+		-webkit-transition: -webkit-transform 0.3s;
+		-moz-transition: -moz-transform 0.3s;
+		transition: transform 0.3s;
+	}	
+
+	.md-show.md-effect ~ .container,
+	.md-show.md-effect ~ .md-overlay  {
+		-webkit-transform: rotateX(-2deg);
+		-moz-transform: rotateX(-2deg);
+		-ms-transform: rotateX(-2deg);
+		transform: rotateX(-2deg);
+		-webkit-transform-origin: 50% 0%;
+		-moz-transform-origin: 50% 0%;
+		transform-origin: 50% 0%;
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+	}
+
+	.md-effect .md-content {
+		opacity: 0;
+		-webkit-transform: translateY(200%);
+		-moz-transform: translateY(200%);
+		-ms-transform: translateY(200%);
+		transform: translateY(200%);
+	}
+
+	.md-show.md-effect .md-content {
+		-webkit-transform: translateY(0);
+		-moz-transform: translateY(0);
+		-ms-transform: translateY(0);
+		transform: translateY(0);
+		opacity: 1;
+		-webkit-transition: all 0.3s 0.2s;
+		-moz-transition: all 0.3s 0.2s;
+		transition: all 0.3s 0.2s;
+	}
+
+/*---------------------------------------------------------*/
+/* 2.2. MOBILE			                                   */
+/*---------------------------------------------------------*/
+
+.mobile #homescreen { display: block; }
+
+#homescreen {
+	background: #f67280;
+	height: 100%;
+	overflow: hidden;
+	padding-top: 4rem;
+	text-align: center;
+}
+
+/*---------------------------------------------------------*/
+/* 2.3. MOBILE			                                   */
+/*---------------------------------------------------------*/
+
+.webapp #app { display: block; }
+
+#app,
+#content,
+#slider {
+	height: 100%;
+	width: 100%;
+}
+
+#content {
+	position: relative;
+	z-index: 2;
+	-webkit-transition: all 0.5s;
+ 	-moz-transition: all 0.5s;
+ 	-o-transition: all 0.5s;
+ 	transition: all 0.5s;
+}
+#content.open {
+	-webkit-transform: translate(-240px, 0px);
+	-moz-transform: translate(-240px, 0px);
+	-o-transform: translate(-240px, 0px);
+	-ms-transform: translate(-240px, 0px);
+	transform: translate(-240px, 0px);
+}
+
+	#header {
+		background: #3a4447;
+		height: 4rem;
+	}
+
+		.settings {
+			background: #33373b;
+			color: #fff;
+			float: right;
+			font-size: 2rem;
+			height: 100%;
+			padding: 0 2.5rem 0 1.8rem;
+			position: relative;
+			text-align: center;
+			text-decoration: none;
+			width: 1rem;
+			z-index: 1;
+		}
+		.settings:before { margin-top: 1.5rem; }
+
+	/*---------------------------------------------------------*/
+	/* 2.1. LISTE AMIS                                         */
+	/*---------------------------------------------------------*/
+
+	#slider ul {
+		background: #fff;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+
+		.slide {
+			background: #fff;
+			height: 100%;
+			margin: 0 auto;
+			overflow-x: hidden;
+			overflow-y: auto;
+			-webkit-overflow-scrolling: touch;
+			position: relative;
+			text-align: center;
+			width: 100%;
+		}
+		.slide-first { background: #f67280; }
+
+			.slide .content {
+				-webkit-transform: translate3d(0,0,0);
+			}
+
+				.slide header { overflow: hidden; }
+
+				.slide:nth-child(5n+1) header { background: #f4b8a4; }
+				.slide:nth-child(5n+2) header { background: #f67280; }
+				.slide:nth-child(5n+3) header { background: #c06c84; }
+				.slide:nth-child(5n+4) header { background: #6c5b7b; }
+				.slide:nth-child(5n+5) header { background: #355c7d; }
+
+				.slide li { 
+					height: 100%;
+					list-style: none;
+					position: relative;
+				}
+
+			.pagination {
+				margin: 1.4rem 0;
+				padding: 0 2rem;
+				position: absolute;
+				text-align: center;
+				top: 0;
+				width: 88%;
+				-webkit-transition: all .250s ease-out;
+			}
+
+				.pagination li {
+					background: rgba(0, 0, 0, 0.12);
+					border-radius: 20px;
+					display: inline-block;
+					height: 0.5em;
+					margin-right: 10px;
+					width: 0.5em;
+					-webkit-transition: all 0.5s;
+					-moz-transition: all 0.5s;
+					-o-transition: all 0.5s;
+					transition: all 0.5s;
+				}
+				.pagination li:first-child { margin-left: 5rem; }
+				
+				.pagination li.selected {
+					background: white;
+					height: 0.7em;
+					width: 0.7em;
+				}
+
+	/*---------------------------------------------------------*/
+	/* 2.2. GESTION CADEAUX                                    */
+	/*---------------------------------------------------------*/
+
+		.gift-list {
+			height: 100%;
+		}
+
+			.gift-list ul {
+				list-style: none;
+				padding: 0;
+			}
+
+				.gift-list ul li {
+					border-bottom: 1px solid #EFEFEF;
+					border-left: 15px solid #355c7d;
+					color: #3A3F46;
+					font-size: 1.5em;
+					height: auto;
+					line-height: 2.5em;
+					position: relative;
+					-webkit-transition: all 0.5s;
+			     	-moz-transition: all 0.5s;
+			     	-o-transition: all 0.5s;
+			     	transition: all 0.5s;
+				}
+				.gift-list ul li.given {
+					opacity: 0.5;
+					text-decoration: line-through; 
+				}
+				.gift-list ul li.add {
+					border: none;
+					margin-bottom: 4rem;
+				}
+
+				.gift-list ul li:nth-child(5n+1) { border-left-color: #f4b8a4; }
+				.gift-list ul li:nth-child(5n+2) { border-left-color: #f67280; }
+				.gift-list ul li:nth-child(5n+3) { border-left-color: #c06c84; }
+				.gift-list ul li:nth-child(5n+4) { border-left-color: #6c5b7b; }
+				.gift-list ul li:nth-child(5n+5) { border-left-color: #355c7d; }
+
+					.gift-list ul li .icon-gift {
+						background: none;
+						border: none;
+						display: block;
+						height: 3em;
+						font-size: 0.8em;
+	 					opacity: 0.8;
+	 					left: 0.2em;
+	 					position: absolute;
+	 					text-align: center;
+	 					top: 0;
+	 					width: 3em;
+	 					-webkit-appearance: none;
+						-ms-appearance: none;
+						-o-appearance: none;
+						appearance: none;
+					}
+					.gift-list ul li .icon-gift:before {
+						margin-top: 1em;
+					}
+
+					.gift-list ul li.given .icon-gift:after {
+						top: 2.7em;
+						content: 'déjà offert';
+						font-size: 0.5em;
+						position: absolute;
+						right: -2.4em;
+					}
+
+					.gift-list ul li.given .gift-name {
+						text-decoration: line-through;
+					}
+
+					.gift-list ul li:hover button.remove { opacity: 1; }
+
+/*---------------------------------------------------------*/
+/* 3. SIDEBAR		                                       */
+/*---------------------------------------------------------*/
+
+#settings {
+	background: #3a4447;
+	font-size: 0.9em;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 240px;
+	z-index: 1;
+}
+
+	#settings .content {
+		-webkit-transform: translate3d(0,0,0);
+	}
+
+		#settings h2 {
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+			font-family: helvetica neue, arial, sans-serif;
+			font-size: 0.9rem;
+			margin-bottom: 0;
+			padding: 0 1rem 0.5rem 1rem;
+		}
+
+		#settings input {
+			font-size: 1em;
+			text-align: left;
+		}
+
+		.friend-list ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+			.friend-list ul li {
+				border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+				line-height: 3.5em;
+				padding: 0 1em;
+				position: relative;
+			}
+
+				.friend-list ul li button.remove {
+					font-size: 1.2em;
+				}
+
+/*---------------------------------------------------------*/
+/* 4. ANIMATION		                                       */
+/*---------------------------------------------------------*/
+
+@-webkit-keyframes plop {
+    0% {
+        -webkit-transform: translateY(-500px) scale(1.9);
+        opacity: 0;
+    }
+    50% {
+    	-webkit-transform: scale(1);
+    }
+    100% {
+        -webkit-transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes slideLeft {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateX(-15px);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+
+@-moz-keyframes plop {
+    0% {
+        -moz-transform: translateY(-500px) scale(1.9);
+        opacity: 0;
+    }
+    50% {
+    	-moz-transform: scale(1);
+    }
+    100% {
+        -moz-transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes slideLeft {
+	0% {
+		opacity: 0;
+		-moz-transform: translateX(-15px);
+	}
+	100% {
+		opacity: 1;
+		-moz-transform: translateY(0);
+	}
+}
+
+@keyframes plop {
+    0% {
+        transform: translateY(-500px) scale(1.9);
+        opacity: 0;
+    }
+    50% {
+    	transform: scale(1);
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(-15px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/*---------------------------------------------------------*/
+/* 5. MEDIA QUERIES	                                       */
+/*---------------------------------------------------------*/
+
+/* Grand écran */
+@media only screen 
+and (min-width : 1500px) {
+	#desktop {
+		padding: 10rem;
+	}
+}
+
+/* Iphone landscape/portrait */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+	h2 { line-height: 1em; }
+
+	input.add {
+		font-size: 1rem;
+		line-height: 2.5rem;
+		margin: 1rem 0;
+		padding: 0 1rem 0 2.5rem;
+	}
+
+	.gift-list ul li { font-size: 1.1rem; }
+
+	.pagination {
+		margin-top: 1.5rem;
+		width: 53%;
+	}
+}
+
+/* Iphone portrait */
+@media only screen 
+and (max-width : 320px) {
+	.pagination li:first-child { margin-left: 0; }
+}
+
+/* Iphone landscape */
+@media only screen 
+and (min-width : 321px) {
+	h2 {
+		font-size: 1.5rem;
+		margin: 1rem 0;
+	}
+}

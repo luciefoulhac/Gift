@@ -1,0 +1,33 @@
+CACHE MANIFEST
+# Gift 1.0
+
+NETWORK:
+*
+
+CACHE:
+# style
+/lab/giftapp/css/common.css
+
+# scripts
+/lab/giftapp/js/application.js
+
+# images
+/lab/giftapp/images/icon.png
+/lab/giftapp/images/icon@2x.png
+/lab/giftapp/images/ipad-landscape.png
+/lab/giftapp/images/ipad-landscape@2x.png
+/lab/giftapp/images/ipad-portrait.png
+/lab/giftapp/images/ipad-portrait@2x.png
+/lab/giftapp/images/iphone.png
+/lab/giftapp/images/iphone5.png
+
+# fonts
+/lab/giftapp/fonts/giftapp-webfont.eot
+/lab/giftapp/fonts/giftapp-webfont.svg
+/lab/giftapp/fonts/giftapp-webfont.ttf
+/lab/giftapp/fonts/giftapp-webfont.woff
+/lab/giftapp/fonts/pacifico-webfont.eot
+/lab/giftapp/fonts/pacifico-webfont.svg
+/lab/giftapp/fonts/pacifico-webfont.ttf
+/lab/giftapp/fonts/pacifico-webfont.woff
+/lab/giftapp/fonts/pacifico-webfont.woff2

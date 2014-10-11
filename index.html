@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html manifest="/lab/giftapp/gift.manifest">
+<head>
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Gift">
+	<meta name="viewport" content="user-scalable=0, initial-scale=1.0">
+	<title>Gift</title>
+	<link href="/lab/giftapp/css/normalize.css" rel="stylesheet">
+	<link href="/lab/giftapp/css/common.css" rel="stylesheet">
+
+	<link rel="shortcut icon" href="/lab/giftapp/images/favicon.png">
+	<link rel="apple-touch-icon" href="/lab/giftapp/images/icon.png">
+
+    <!-- iPhone -->
+    <link href="/lab/giftapp/images/iphone.png"
+          media="(device-width: 320px) and (device-height: 480px)
+             and (-webkit-device-pixel-ratio: 1)"
+          rel="apple-touch-startup-image">
+
+    <!-- iPhone (Retina) -->
+    <link href="/lab/giftapp/images/iphone@2x.png"
+          media="(device-width: 320px) and (device-height: 480px)
+             and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+
+    <!-- iPhone 5 -->
+    <link href="/lab/giftapp/images/iphone5.png"
+          media="(device-width: 320px) and (device-height: 568px)
+             and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+
+    <!-- iPad -->
+    <link href="/lab/giftapp/images/ipad-landscape.png"
+          media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: portrait)
+             and (-webkit-device-pixel-ratio: 1)"
+          rel="apple-touch-startup-image">
+    <link href="/lab/giftapp/images/ipad-landscape@2x.png"
+          media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: landscape)
+             and (-webkit-device-pixel-ratio: 1)"
+          rel="apple-touch-startup-image">
+
+    <!-- iPad (Retina) -->
+    <link href="/lab/giftapp/images/ipad-portrait.png"
+          media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: portrait)
+             and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+    <link href="/lab/giftapp/images/ipad-portrait@2x.png"
+          media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: landscape)
+             and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+</head>
+<body ng-app='gift'>
+	<div class="md-modal md-effect" id="modal">
+	    <div class="md-content">
+	        <h2>Visitez cette page sur une plateforme <strong>IOS</strong></h2>
+	        <div>
+	        	<p><strong>Gift</strong> est une web app conçu pour IOS.</p>
+	        	<p>Visitez cette page sur votre Iphone ou Ipad et installez là sur votre <strong>écran d'accueil</strong>.</p>
+	        </div>
+	    </div>
+	</div>
+	<section id="desktop" class="container">
+		<div class="description left">
+			<h1>Gift</h1>
+
+			<p>Une discussion, un produit vu dans un magasin, un moment insolite, une publicité, vous avez souvent des idées de cadeaux pour vos proches. Malheureusement le jour J pour un anniversaire ou Noël, c'est la panne d'inspiration !</p>
+		
+			<p><strong>Donc si comme moi vous avez une mémoire de poisson, découvrez l'application Gift sur votre iphone ou ipad !</strong></p>
+			
+			<button class="try">Tester !</button>
+		</div>
+		<img src="/lab/giftapp/images/app.png" alt="Application Gift">
+	</section>
+	<div class="md-overlay"></div>
+
+	<div id="homescreen">
+		<img src="/lab/giftapp/images/icon@2x.png" alt="Application Gift">
+		<p>Ajouter l'application sur votre <strong>écran d'accueil</strong></p>
+	</div>
+		
+	<section id="app" ng-controller="GiftCtrl" ng-cloak>
+		<header id="settings" class="scroll">
+			<div class="content">
+				<h2>Votre liste d'amis</h2>
+				<section class="friend-list">
+					<ul>
+						<li ng-repeat="friend in friends track by $index">
+							<input type="text" value="{{friend.name}}" autocorrect="off" ng-model="friend.name">
+							<button class="remove" ng-click="removeFriend($index)">&times;</button>
+						</li>
+					</ul>
+				</section>
+				<form action="" ng-submit="addFriend()">
+					<input type="text" placeholder="Ajouter un ami" autocomplet="off" ng-model="newFriend" class="add-friend">
+				</form>
+			</div>
+		</header>
+
+		<section id="content" ng-class="{open: settingsOpen}">
+			<header id="header">
+				<a href="javascript:void(0);" class="settings icon-th-list" ng-click="settingsOpen = !settingsOpen"></a>
+			</header>
+
+			<ul class="pagination" ng-if="friends.length > 1">
+				<li ng-repeat="friend in friends track by $index" ng-class="{selected: selected == $index}"></li>
+			</ul>
+
+			<section id="slider" ng-click="settingsOpen ? settingsOpen = false : ''">
+				<ul ng-if="friends.length == 0">
+					<li class="slide slide-first">
+						<h1>Gift</h1>
+						<form action="" ng-submit="addFriend()" class="icon-plus">
+							<input type="text" autocomplet="off" ng-model="$parent.newFriend" class="add add-first" placeholder="Ajouter votre premier ami">
+						</form>
+					</li>
+				</ul>
+				<ul ng-if="friends.length > 0">
+					<li class="slide icon-emo scroll"  ng-repeat="(indexf, friend) in friends track by $index" ng-class="{cubeempty: friend.gifts.length == 0, cube: friend.gifts.length > 0 && friend.gifts.length <=2, cubes: friend.gifts.length > 2}">
+						<div class="content">
+							<header>
+								<h2>{{friend.name}}</h2>
+							</header>
+
+							<section class="gift-list">
+								<ul>
+									<li ng-repeat="gift in friend.gifts track by $index" ng-class="{given: gift.given}">
+										<input type="checkbox" ng-model="gift.given" class="icon-gift">
+										<input type="text" value="{{gift.name}}" autocorrect="off" ng-model="gift.name">
+										<button class="remove" ng-click="removeGift(indexf, $index)">&times;</button>
+									</li>
+									<li class="add">
+										<form action="javascript:void(0);" class="icon-plus" ng-submit="addGift($index)">
+											<input type="text" placeholder="Nouvelle idée cadeau" autocomplet="off" ng-model="$parent.newGift[$index]" class="add">
+										</form>
+									</li>
+								</ul>
+							</section>
+						</div>
+					</li>
+				</ul>
+
+			</section>
+		</section>
+	</section>
+
+	<script src="/lab/giftapp/js/libs/angular.min.js"></script>
+	<script src="/lab/giftapp/js/libs/jquery-2.1.1.min.js"></script>
+	<script src="/lab/giftapp/js/libs/jquery.iosslider.min.js"></script>
+	<script src="/lab/giftapp/js/libs/iscroll.js"></script>
+	<script src="/lab/giftapp/js/libs/fastclick.js"></script>
+	<script src="/lab/giftapp/js/application.js"></script>
+</body>
+</html>
